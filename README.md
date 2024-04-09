@@ -1,6 +1,4 @@
-# Stand With Ukraine
 
-[![SWUbanner](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner-direct.svg)](https://github.com/vshymanskyy/StandWithUkraine/blob/main/docs/README.md)
 
 ----
 
@@ -28,7 +26,7 @@ PHP-VAST
 Install library through composer:
 
 ```
-composer require sokil/php-vast
+composer require Airtory/php-vast
 ```
 
 ## Quick start
