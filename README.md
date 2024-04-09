@@ -5,9 +5,9 @@
 PHP-VAST
 ========
 
-[![Build](https://github.com/sokil/php-vast/workflows/Test/badge.svg?branch=2.0)](https://github.com/sokil/php-vast/actions?query=workflow%3ATest)
-[![Total Downloads](http://img.shields.io/packagist/dt/sokil/php-vast.svg?1)](https://packagist.org/packages/sokil/php-vast)
-[![Coverage Status](https://coveralls.io/repos/github/sokil/php-vast/badge.svg?branch=master&1)](https://coveralls.io/github/sokil/php-vast?branch=master)
+[![Build](https://github.com/airtory/php-vast/workflows/Test/badge.svg?branch=2.0)](https://github.com/airtory/php-vast/actions?query=workflow%3ATest)
+[![Total Downloads](http://img.shields.io/packagist/dt/airtory/php-vast.svg?1)](https://packagist.org/packages/airtory/php-vast)
+[![Coverage Status](https://coveralls.io/repos/github/airtory/php-vast/badge.svg?branch=master&1)](https://coveralls.io/github/airtory/php-vast?branch=master)
 
 :star: VAST Ad generator and parser library on PHP.
 
@@ -33,7 +33,7 @@ composer require Airtory/php-vast
 
 ```php
 // create document
-$factory = new \Sokil\Vast\Factory();
+$factory = new \airtory\Vast\Factory();
 $document = $factory->create('4.1');
 
 // insert Ad section
@@ -138,7 +138,7 @@ This will generate:
 
 VAST document elements are completely described in it's specification, but some Ad servers may add support for custom elements and attributes. This library strictly follows specification, generally because two dialects of VAST may conflict with each other. You may write our own dialect by overriding element builder and create any elements and attributes you want.
 
-The VAST dialect is described in `\Sokil\Vast\ElementBuilder` class. By overriding it you may create instances of your own classes and add there any setters.
+The VAST dialect is described in `\airtory\Vast\ElementBuilder` class. By overriding it you may create instances of your own classes and add there any setters.
 
 First let's create a class for `MediaFile` and add some custom attributes:
 
@@ -147,7 +147,7 @@ First let's create a class for `MediaFile` and add some custom attributes:
 
 namespace Acme\Vast\ElementBuilder\Element;
 
-use Sokil\Vast\Creative\InLine\Linear\MediaFile;
+use airtory\Vast\Creative\InLine\Linear\MediaFile;
 
 class AcmeMediaFile extends MediaFile
 {
@@ -172,7 +172,7 @@ Now we need to override the default element builder and create our own `MediaFil
 
 namespace Acme\Vast\ElementBuilder;
 
-use Sokil\Vast\ElementBuilder;
+use airtory\Vast\ElementBuilder;
 use Acme\Vast\ElementBuilder\Element\AcmeMediaFile;
 
 class AcmeElementBuilder extends ElementBuilder
@@ -197,7 +197,7 @@ Now we need to confugure VAST factory to use overridden element builder:
 <?php
 
 use Acme\Vast\ElementBuilder\AcmeElementBuilder;
-use Sokil\Vast\Factory;
+use airtory\Vast\Factory;
 
 $elementBuilder = new AcmeElementBuilder();
 $factory = new Factory($elementBuilder);
