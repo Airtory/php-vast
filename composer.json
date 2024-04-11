@@ -20,12 +20,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Sokil\\Vast\\": ["src/"]
+            "Airtory\\Vast\\": ["src/"]
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Sokil\\Vast\\": ["tests/"]
+            "Airtory\\Vast\\": ["tests/"]
         }
     },
     "scripts": {
