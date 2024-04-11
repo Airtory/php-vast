@@ -16,8 +16,10 @@ use Airtory\Vast\Ad\InLine;
 use Airtory\Vast\Ad\Wrapper;
 use Airtory\Vast\Creative\InLine\Linear as InLineAdLinearCreative;
 use Airtory\Vast\Creative\InLine\Linear\InteractiveCreativeFile;
+use Airtory\Vast\Creative\InLine\CompanionAds as InLineAdCompanionAdsCreative;
 use Airtory\Vast\Creative\Wrapper\Linear as WrapperAdLinearCreative;
 use Airtory\Vast\Creative\InLine\Linear\MediaFile;
+use Airtory\Vast\Creative\InLine\CompanionAds\Companion;
 use Airtory\Vast\Creative\InLine\Linear\ClosedCaptionFile;
 
 /**
@@ -77,6 +79,19 @@ class ElementBuilder
     }
 
     /**
+     * <Ad><InLine><Creatives><Creative> with <CompanionAds> inside
+     * 
+     * @param \DOMElement $creativeDomElement
+     * 
+     * @return InLineAdCompanionAdsCreative
+     */
+    public function createInLineAdCompanionAdsCreative(\DOMElement $creativeDomElement): InLineAdCompanionAdsCreative
+    {
+        return new InLineAdCompanionAdsCreative($creativeDomElement, $this);
+    }
+
+
+    /**
      * <Ad><Wrapper><Creatives><Creative> with <Linear> inside
      *
      * @param \DOMElement $creativeDomElement
@@ -98,6 +113,18 @@ class ElementBuilder
     public function createInLineAdLinearCreativeMediaFile(\DOMElement $mediaFileDomElement): MediaFile
     {
         return new MediaFile($mediaFileDomElement);
+    }
+
+    /**
+     * <Ad><InLine><Creatives><Creative><CompanionAds><Companion>
+     * 
+     * @param \DOMElement $companionDomElement
+     * 
+     * @return Companion
+     */
+    public function createInLineAdCompanionAdsCreativeCompanion(\DOMElement $companionDomElement): Companion
+    {
+        return new Companion($companionDomElement);
     }
 
     /**

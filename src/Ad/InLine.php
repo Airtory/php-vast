@@ -14,6 +14,7 @@ namespace Airtory\Vast\Ad;
 
 use Airtory\Vast\Creative\AbstractCreative;
 use Airtory\Vast\Creative\InLine\Linear as InLineAdLinearCreative;
+use Airtory\Vast\Creative\InLine\CompanionAds as InLineAdCompanionAdsCreative;
 
 class InLine extends AbstractAdNode
 {
@@ -26,6 +27,7 @@ class InLine extends AbstractAdNode
      * @private
      */
     const CREATIVE_TYPE_LINEAR = 'Linear';
+    const CREATIVE_TYPE_COMPANIONADS = 'CompanionAds';
 
     /**
      * @return string
@@ -84,6 +86,7 @@ class InLine extends AbstractAdNode
     {
         return [
             self::CREATIVE_TYPE_LINEAR,
+            self::CREATIVE_TYPE_COMPANIONADS,
         ];
     }
 
@@ -98,6 +101,9 @@ class InLine extends AbstractAdNode
         switch ($type) {
             case self::CREATIVE_TYPE_LINEAR:
                 $creative = $this->vastElementBuilder->createInLineAdLinearCreative($creativeDomElement);
+                break;
+            case self::CREATIVE_TYPE_COMPANIONADS:
+                $creative = $this->vastElementBuilder->createInLineAdCompanionAdsCreative($creativeDomElement);
                 break;
             default:
                 throw new \RuntimeException(sprintf('Unknown Wrapper creative type %s', $type));
@@ -117,6 +123,22 @@ class InLine extends AbstractAdNode
     {
         /** @var InLineAdLinearCreative $creative */
         $creative = $this->buildCreative(self::CREATIVE_TYPE_LINEAR);
+
+        return $creative;
+    }
+
+
+    /**
+     * Create CompanionAds creative
+     * 
+     * @throws \Exception
+     * 
+     * @return InLineAdCompanionAdsCreative
+     */
+    public function createCompanionAdsCreative(): InLineAdCompanionAdsCreative
+    {
+        /** @var InLineAdCompanionAdsCreative $creative */
+        $creative = $this->buildCreative(self::CREATIVE_TYPE_COMPANIONADS);
 
         return $creative;
     }
