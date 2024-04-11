@@ -10,11 +10,11 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Sokil\Vast\Ad;
+namespace Airtory\Vast\Ad;
 
-use Sokil\Vast\Creative\AbstractCreative;
-use Sokil\Vast\Document\AbstractNode;
-use Sokil\Vast\ElementBuilder;
+use Airtory\Vast\Creative\AbstractCreative;
+use Airtory\Vast\Document\AbstractNode;
+use Airtory\Vast\ElementBuilder;
 
 abstract class AbstractAdNode extends AbstractNode
 {

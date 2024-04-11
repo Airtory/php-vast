@@ -10,9 +10,9 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Sokil\Vast\Creative\Wrapper;
+namespace Airtory\Vast\Creative\Wrapper;
 
-use Sokil\Vast\Creative\AbstractLinearCreative;
+use Airtory\Vast\Creative\AbstractLinearCreative;
 
 class Linear extends AbstractLinearCreative
 {

@@ -10,10 +10,10 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Sokil\Vast\Ad;
+namespace Airtory\Vast\Ad;
 
-use Sokil\Vast\Creative\AbstractCreative;
-use Sokil\Vast\Creative\InLine\Linear as InLineAdLinearCreative;
+use Airtory\Vast\Creative\AbstractCreative;
+use Airtory\Vast\Creative\InLine\Linear as InLineAdLinearCreative;
 
 class InLine extends AbstractAdNode
 {

@@ -10,12 +10,12 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Sokil\Vast;
+namespace Airtory\Vast;
 
-use Sokil\Vast\Ad\AbstractAdNode;
-use Sokil\Vast\Ad\InLine;
-use Sokil\Vast\Ad\Wrapper;
-use Sokil\Vast\Document\AbstractNode;
+use Airtory\Vast\Ad\AbstractAdNode;
+use Airtory\Vast\Ad\InLine;
+use Airtory\Vast\Ad\Wrapper;
+use Airtory\Vast\Document\AbstractNode;
 
 class Document extends AbstractNode
 {
@@ -118,7 +118,7 @@ class Document extends AbstractNode
     /**
      * Create inline Ad section
      *
-     * @return \Sokil\Vast\Ad\InLine
+     * @return \Airtory\Vast\Ad\InLine
      */
     public function createInLineAdSection(): InLine
     {
@@ -128,7 +128,7 @@ class Document extends AbstractNode
     /**
      * Create Wrapper Ad section
      *
-     * @return \Sokil\Vast\Ad\Wrapper
+     * @return \Airtory\Vast\Ad\Wrapper
      */
     public function createWrapperAdSection(): Wrapper
     {

@@ -10,15 +10,15 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Sokil\Vast;
+namespace Airtory\Vast;
 
-use Sokil\Vast\Ad\InLine;
-use Sokil\Vast\Ad\Wrapper;
-use Sokil\Vast\Creative\InLine\Linear as InLineAdLinearCreative;
-use Sokil\Vast\Creative\InLine\Linear\InteractiveCreativeFile;
-use Sokil\Vast\Creative\Wrapper\Linear as WrapperAdLinearCreative;
-use Sokil\Vast\Creative\InLine\Linear\MediaFile;
-use Sokil\Vast\Creative\InLine\Linear\ClosedCaptionFile;
+use Airtory\Vast\Ad\InLine;
+use Airtory\Vast\Ad\Wrapper;
+use Airtory\Vast\Creative\InLine\Linear as InLineAdLinearCreative;
+use Airtory\Vast\Creative\InLine\Linear\InteractiveCreativeFile;
+use Airtory\Vast\Creative\Wrapper\Linear as WrapperAdLinearCreative;
+use Airtory\Vast\Creative\InLine\Linear\MediaFile;
+use Airtory\Vast\Creative\InLine\Linear\ClosedCaptionFile;
 
 /**
  * Builder of VAST document elements, useful for overriding element classes

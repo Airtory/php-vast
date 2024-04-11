@@ -10,12 +10,12 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Sokil\Vast\Creative\InLine;
+namespace Airtory\Vast\Creative\InLine;
 
-use Sokil\Vast\Creative\AbstractLinearCreative;
-use Sokil\Vast\Creative\InLine\Linear\ClosedCaptionFile;
-use Sokil\Vast\Creative\InLine\Linear\InteractiveCreativeFile;
-use Sokil\Vast\Creative\InLine\Linear\MediaFile;
+use Airtory\Vast\Creative\AbstractLinearCreative;
+use Airtory\Vast\Creative\InLine\Linear\ClosedCaptionFile;
+use Airtory\Vast\Creative\InLine\Linear\InteractiveCreativeFile;
+use Airtory\Vast\Creative\InLine\Linear\MediaFile;
 
 class Linear extends AbstractLinearCreative
 {

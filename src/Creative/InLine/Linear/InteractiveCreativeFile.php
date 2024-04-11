@@ -10,7 +10,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Sokil\Vast\Creative\InLine\Linear;
+namespace Airtory\Vast\Creative\InLine\Linear;
 
 /**
  * Optional node that enables interactive creative files associated with the ad media (video or audio)

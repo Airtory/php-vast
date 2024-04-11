@@ -10,7 +10,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Sokil\Vast\Document;
+namespace Airtory\Vast\Document;
 
 abstract class AbstractNode
 {

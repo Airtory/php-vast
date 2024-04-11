@@ -10,9 +10,9 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Sokil\Vast\Creative;
+namespace Airtory\Vast\Creative;
 
-use Sokil\Vast\Document\AbstractNode;
+use Airtory\Vast\Document\AbstractNode;
 
 abstract class AbstractCreative extends AbstractNode
 {
