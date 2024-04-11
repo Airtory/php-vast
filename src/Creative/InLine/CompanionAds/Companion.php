@@ -58,41 +58,24 @@ class Companion
     }
 
 
-    // /**
-    //  * Add Error tracking url.
-    //  * Allowed multiple error elements.
-    //  *
-    //  * @param string $url
-    //  *
-    //  * @return AbstractAdNode
-    //  */
-    // public function addIFrameResource(string $url): self
-    // {
-        
-    //     // create cdata
-    //     $cdata = $this->getDomElement()->ownerDocument->createCDATASection($url);
-    //     dd($cdata);
-    //     $clickTrackingDomElement->appendChild($cdata);
-
-    //     return $this;
-    // }
-
-    /**
-     * Set file URL
-     *
-     * @param string $url URL of the file
-     */
-    public function setUrl(string $url): self
+    public function setIFrameResource(string $url): self
     {
         $cdata = $this->domElement->ownerDocument->createCDATASection($url);
 
-        // update CData
-        if ($this->domElement->hasChildNodes()) {
-            $this->domElement->replaceChild($cdata, $this->domElement->firstChild);
-        } // insert CData
-        else {
-            $this->domElement->appendChild($cdata);
+        // create ClickThrough
+        $clickThroughDomElement = $this->domElement->getElementsByTagName('IFrameResource')->item(0);
+        if (!$clickThroughDomElement) {
+            $clickThroughDomElement = $this->domElement->ownerDocument->createElement('IFrameResource');
+            $this->domElement->appendChild($clickThroughDomElement);
         }
+
+        // update CData
+        if ($clickThroughDomElement->hasChildNodes()) {
+            $clickThroughDomElement->replaceChild($cdata, $clickThroughDomElement->firstChild);
+        } else { // insert CData
+            $clickThroughDomElement->appendChild($cdata);
+        }
+
         return $this;
     }
 }

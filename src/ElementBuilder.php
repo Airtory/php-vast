@@ -128,6 +128,18 @@ class ElementBuilder
     }
 
     /**
+     * <Ad><InLine><Creatives><Creative><CompanionAds><Companion><IFrameResource>
+     * 
+     * @param \DOMElement $companionDomElement
+     * 
+     * @return IFrameResource
+     */
+    public function createInLineAdCompanionAdsCreativeCompanionIFrameResource(\DOMElement $companionDomElement): IFrameResource
+    {
+        return new IFrameResource($companionDomElement);
+    }
+
+    /**
      * <Ad><InLine><Creatives><Creative><Linear><MediaFiles><InteractiveCreativeFile>
      *
      * @param \DOMElement $mediaFileDomElement

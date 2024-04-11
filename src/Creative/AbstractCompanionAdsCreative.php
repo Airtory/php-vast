@@ -86,7 +86,7 @@ abstract class AbstractCompanionAdsCreative extends AbstractCreative
             return $this->trackingEventsDomElement;
         }
         
-        $this->trackingEventsDomElement = $this->linearCreativeDomElement
+        $this->trackingEventsDomElement = $this->companionAdsCreativeDomElement
             ->getElementsByTagName('TrackingEvents')
             ->item(0);
 
@@ -94,11 +94,11 @@ abstract class AbstractCompanionAdsCreative extends AbstractCreative
             return $this->trackingEventsDomElement;
         }
         
-        $this->trackingEventsDomElement = $this->linearCreativeDomElement
+        $this->trackingEventsDomElement = $this->companionAdsCreativeDomElement
             ->ownerDocument
             ->createElement('TrackingEvents');
 
-        $this->linearCreativeDomElement
+        $this->companionAdsCreativeDomElement
             ->getElementsByTagName('Linear')
             ->item(0)
             ->appendChild($this->trackingEventsDomElement);
@@ -121,14 +121,14 @@ abstract class AbstractCompanionAdsCreative extends AbstractCreative
         }
         
         // create Tracking
-        $trackingDomElement = $this->linearCreativeDomElement->ownerDocument->createElement('Tracking');
+        $trackingDomElement = $this->companionAdsCreativeDomElement->ownerDocument->createElement('Tracking');
         $this->getTrackingEventsDomElement()->appendChild($trackingDomElement);
         
         // add event attribute
         $trackingDomElement->setAttribute('event', $event);
 
         // create cdata
-        $cdata = $this->linearCreativeDomElement->ownerDocument->createCDATASection($url);
+        $cdata = $this->companionAdsCreativeDomElement->ownerDocument->createCDATASection($url);
         $trackingDomElement->appendChild($cdata);
 
         return $this;
@@ -143,7 +143,7 @@ abstract class AbstractCompanionAdsCreative extends AbstractCreative
     public function addProgressTrackingEvent(string $url, $offset): self
     {
         // create Tracking
-        $trackingDomElement = $this->linearCreativeDomElement->ownerDocument->createElement('Tracking');
+        $trackingDomElement = $this->companionAdsCreativeDomElement->ownerDocument->createElement('Tracking');
         $this->getTrackingEventsDomElement()->appendChild($trackingDomElement);
 
         // add event attribute
@@ -156,7 +156,7 @@ abstract class AbstractCompanionAdsCreative extends AbstractCreative
         $trackingDomElement->setAttribute('offset', $offset);
 
         // create cdata
-        $cdata = $this->linearCreativeDomElement->ownerDocument->createCDATASection($url);
+        $cdata = $this->companionAdsCreativeDomElement->ownerDocument->createCDATASection($url);
         $trackingDomElement->appendChild($cdata);
 
         return $this;
@@ -188,5 +188,60 @@ abstract class AbstractCompanionAdsCreative extends AbstractCreative
         $time[] = str_pad((string)($seconds % 60), 2, '0', STR_PAD_LEFT);
 
         return implode(':', $time);
+    }
+
+    /**
+     * Set video click through url
+     *
+     * @param string $url
+     *
+     * @return AbstractLinearCreative
+     */
+    public function setVideoClicksClickThrough(string $url): self
+    {
+        // create cdata
+        $cdata = $this->getDomElement()->ownerDocument->createCDATASection($url);
+
+        // create ClickThrough
+        $clickThroughDomElement = $this->getVideoClicksDomElement()->getElementsByTagName('IFrameResource')->item(0);
+        if (!$clickThroughDomElement) {
+            $clickThroughDomElement = $this->getDomElement()->ownerDocument->createElement('IFrameResource');
+            $this->getVideoClicksDomElement()->appendChild($clickThroughDomElement);
+        }
+
+        // update CData
+        if ($clickThroughDomElement->hasChildNodes()) {
+            $clickThroughDomElement->replaceChild($cdata, $clickThroughDomElement->firstChild);
+        } else { // insert CData
+            $clickThroughDomElement->appendChild($cdata);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get VideoClicks DomElement
+     *
+     * @return \DOMElement
+     */
+    protected function getVideoClicksDomElement(): \DOMElement
+    {
+        // create container
+        if (!empty($this->videoClicksDomElement)) {
+            return $this->videoClicksDomElement;
+        }
+        
+        $this->videoClicksDomElement = $this->companionAdsCreativeDomElement->getElementsByTagName('Companion')->item(0);
+        if (!empty($this->videoClicksDomElement)) {
+            return $this->videoClicksDomElement;
+        }
+        
+        $this->videoClicksDomElement = $this->companionAdsCreativeDomElement->ownerDocument->createElement('Companion');
+        $this->companionAdsCreativeDomElement
+            ->getElementsByTagName('CompanionAds')
+            ->item(0)
+            ->appendChild($this->videoClicksDomElement);
+        
+        return $this->videoClicksDomElement;
     }
 }
