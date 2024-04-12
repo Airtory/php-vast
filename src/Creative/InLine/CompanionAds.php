@@ -4,7 +4,7 @@ declare(strict_types=1);
 /**
  * This file is part of the PHP-VAST package.
  *
- * (c) Dmytro Sokil <dmytro.sokil@gmail.com>
+ * (c) Arshad <arshad@bpract.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -14,7 +14,6 @@ namespace Airtory\Vast\Creative\InLine;
 
 use Airtory\Vast\Creative\AbstractCompanionAdsCreative;
 use Airtory\Vast\Creative\InLine\CompanionAds\Companion;
-use Airtory\Vast\Creative\InLine\Linear\MediaFile;
 
 class CompanionAds extends AbstractCompanionAdsCreative
 {
@@ -50,12 +49,12 @@ class CompanionAds extends AbstractCompanionAdsCreative
         // get needed DOM element
         $companionDomElement = $this->getCompanionElement();
 
-        // create MediaFile and append to MediaFiles
-        $abc = $companionDomElement->ownerDocument->createElement('Companion');
-        $companionDomElement->appendChild($abc);
+        // create Companion and append to CompanionAds
+        $createElement = $companionDomElement->ownerDocument->createElement('Companion');
+        $companionDomElement->appendChild($createElement);
 
         // object
-        return $this->vastElementBuilder->createInLineAdCompanionAdsCreativeCompanion($abc);
+        return $this->vastElementBuilder->createInLineAdCompanionAdsCreativeCompanion($createElement);
     }
 
 }
