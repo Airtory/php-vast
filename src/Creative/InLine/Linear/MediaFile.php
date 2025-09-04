@@ -144,6 +144,30 @@ class MediaFile
     }
 
     /**
+     * @param int $minBitrate
+     *
+     * @return $this
+     */
+    public function setMinBitrate(int $minBitrate): self
+    {
+        $this->domElement->setAttribute('minBitrate', (string)$minBitrate);
+
+        return $this;
+    }
+
+    /**
+     * @param int $maxBitrate
+     *
+     * @return $this
+     */
+    public function setMaxBitrate(int $maxBitrate): self
+    {
+        $this->domElement->setAttribute('maxBitrate', (string)$maxBitrate);
+
+        return $this;
+    }
+
+    /**
      * @deprecated Please note that this attribute is deprecated since VAST 4.1 along with VPAID
      *
      * Identifies the API needed to execute an interactive media file, but current support is for backward
